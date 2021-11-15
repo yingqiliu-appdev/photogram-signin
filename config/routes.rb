@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   # User routes
 
+  get("/user_sign_up", { :controller => "users", :action => "new_registration_form"})
+  get("/user_sign_in", { :controller => "users", :action => "new_session_form"})
+  get("/user_sign_out", { :controller => "users", :action => "toast_cookies"})
+  post("/verify_credentials", { :controller => "users", :action => "authenticate"})
+
   # CREATE
   get("/insert_user_record", {:controller => "users", :action => "create" })
 
@@ -41,5 +46,7 @@ Rails.application.routes.draw do
   # DELETE
 
   get("/delete_comment/:the_comment_id", { :controller => "comments", :action => "destroy"})
+
+
 
 end
