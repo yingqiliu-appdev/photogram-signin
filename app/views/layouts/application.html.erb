@@ -16,19 +16,23 @@
 
     <nav>
       <ul>
-        <li><a href= "/user_sign_in">Sign In</a>
-        </li>
-        <li><a href= "/user_sign_up">Sign up</a>
-        </li>
-        <li><a href= "/user_sign_out">Sign Out</a>
-        </li>        
+        <% if session.fetch(:user_id) == nil %>
+          <li><a href= "/user_sign_in">Sign In</a></li>
+          <li><a href= "/user_sign_up">Sign up</a></li>
+        <% else %>
+          <li><a href= "/user_sign_out">Sign Out</a></li>        
+        <% end %>
+
         <li><a href= "/users">Users</a>
         </li>
+
         <li><a href= "/photos">Photos</a>
         </li>
+
         <li>
           <%= session.fetch(:user_id) %>
         </li>        
+
       </ul>
     </nav>
 
@@ -44,8 +48,8 @@
     </div>
     <% end %>
 
-  <body>
 
+  <body>
     <%= yield %>
   </body>
 </html>

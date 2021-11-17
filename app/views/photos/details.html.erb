@@ -21,7 +21,7 @@
     2 months ago
   </dd>
 
-  <% if @photo.owner_id = @user_id %>
+  <% if @photo.owner_id == session.fetch(:user_id) %>
   <dt>Edit photo</dt>
   <dd>
     <form action="/update_photo/<%= @photo.id %>">
